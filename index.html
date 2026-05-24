@@ -1,1 +1,113 @@
-<script src="https://cdn.tailwindcss.com"></script>
+<!doctype html>
+<html lang="en" class="h-full">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Coen van der Grinten | Portfolio</title>
+		<script>
+			tailwind = {
+				config: {
+					darkMode: "class",
+				},
+			};
+		</script>
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
+	<body class="h-full bg-slate-100 text-slate-900 antialiased transition-colors duration-300 dark:bg-slate-900 dark:text-slate-100">
+		<div class="min-h-screen md:h-screen md:overflow-hidden md:pl-80">
+			<aside class="w-full border-b border-slate-200 bg-white/95 p-6 backdrop-blur md:fixed md:inset-y-0 md:left-0 md:w-80 md:border-b-0 md:border-r dark:border-slate-700 dark:bg-slate-900/95">
+				<div class="flex h-full flex-col justify-between gap-8">
+					<div class="space-y-5">
+						<p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Portfolio</p>
+						<h1 class="text-3xl font-bold leading-tight">Coen van der Grinten</h1>
+						<p class="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+							Machine Learning Engineer focused on practical AI systems, model deployment,
+							and scalable data-driven products.
+						</p>
+						<div class="flex flex-wrap gap-3 text-sm">
+							<a
+								class="rounded-full border border-slate-300 px-4 py-2 font-medium text-slate-700 transition hover:border-slate-800 hover:text-slate-900 dark:border-slate-600 dark:text-slate-200 dark:hover:border-slate-200 dark:hover:text-white"
+								href="https://github.com/"
+								target="_blank"
+								rel="noreferrer"
+							>
+								GitHub
+							</a>
+							<a
+								class="rounded-full border border-slate-300 px-4 py-2 font-medium text-slate-700 transition hover:border-slate-800 hover:text-slate-900 dark:border-slate-600 dark:text-slate-200 dark:hover:border-slate-200 dark:hover:text-white"
+								href="https://www.linkedin.com/"
+								target="_blank"
+								rel="noreferrer"
+							>
+								LinkedIn
+							</a>
+						</div>
+					</div>
+
+					<button
+						id="themeToggle"
+						type="button"
+						class="w-full rounded-lg bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-slate-200 dark:text-slate-900 dark:hover:bg-white"
+					>
+						Toggle Dark Mode
+					</button>
+				</div>
+			</aside>
+
+			<main class="h-full overflow-y-auto p-6 sm:p-8 md:p-12">
+				<div class="mx-auto max-w-4xl space-y-10">
+					<section class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+						<h2 class="text-2xl font-semibold">About</h2>
+						<p class="mt-4 leading-relaxed text-slate-700 dark:text-slate-300">
+							I build machine learning solutions that bridge research and production. This layout
+							is ready for your project highlights, technical writing, and contact details.
+						</p>
+					</section>
+
+					<section class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+						<h2 class="text-2xl font-semibold">Featured Work</h2>
+						<div class="mt-5 grid gap-4 sm:grid-cols-2">
+							<article class="rounded-xl border border-slate-200 p-4 dark:border-slate-600">
+								<h3 class="font-semibold">Project One</h3>
+								<p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+									Add a concise summary of a machine learning project and measurable impact.
+								</p>
+							</article>
+							<article class="rounded-xl border border-slate-200 p-4 dark:border-slate-600">
+								<h3 class="font-semibold">Project Two</h3>
+								<p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+									Highlight your stack, model architecture choices, and deployment strategy.
+								</p>
+							</article>
+						</div>
+					</section>
+
+					<section class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+						<h2 class="text-2xl font-semibold">Experience Snapshot</h2>
+						<ul class="mt-4 space-y-3 text-slate-700 dark:text-slate-300">
+							<li>Designed and deployed end-to-end ML pipelines.</li>
+							<li>Optimized model inference for latency and cost.</li>
+							<li>Collaborated across product, data, and engineering teams.</li>
+						</ul>
+					</section>
+				</div>
+			</main>
+		</div>
+
+		<script>
+			const root = document.documentElement;
+			const themeToggle = document.getElementById("themeToggle");
+			const storedTheme = localStorage.getItem("theme");
+			const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+			if (storedTheme === "dark" || (!storedTheme && prefersDark)) {
+				root.classList.add("dark");
+			}
+
+			themeToggle.addEventListener("click", () => {
+				root.classList.toggle("dark");
+				localStorage.setItem("theme", root.classList.contains("dark") ? "dark" : "light");
+			});
+		</script>
+	</body>
+</html>

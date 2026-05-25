@@ -1,113 +1,394 @@
 <!doctype html>
 <html lang="en" class="h-full">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Coen van der Grinten | Portfolio</title>
-		<script>
-			tailwind = {
-				config: {
-					darkMode: "class",
-				},
-			};
-		</script>
-		<script src="https://cdn.tailwindcss.com"></script>
-	</head>
-	<body class="h-full bg-slate-100 text-slate-900 antialiased transition-colors duration-300 dark:bg-slate-900 dark:text-slate-100">
-		<div class="min-h-screen md:h-screen md:overflow-hidden md:pl-80">
-			<aside class="w-full border-b border-slate-200 bg-white/95 p-6 backdrop-blur md:fixed md:inset-y-0 md:left-0 md:w-80 md:border-b-0 md:border-r dark:border-slate-700 dark:bg-slate-900/95">
-				<div class="flex h-full flex-col justify-between gap-8">
-					<div class="space-y-5">
-						<p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Portfolio</p>
-						<h1 class="text-3xl font-bold leading-tight">Coen van der Grinten</h1>
-						<p class="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-							Machine Learning Engineer focused on practical AI systems, model deployment,
-							and scalable data-driven products.
-						</p>
-						<div class="flex flex-wrap gap-3 text-sm">
-							<a
-								class="rounded-full border border-slate-300 px-4 py-2 font-medium text-slate-700 transition hover:border-slate-800 hover:text-slate-900 dark:border-slate-600 dark:text-slate-200 dark:hover:border-slate-200 dark:hover:text-white"
-								href="https://github.com/"
-								target="_blank"
-								rel="noreferrer"
-							>
-								GitHub
-							</a>
-							<a
-								class="rounded-full border border-slate-300 px-4 py-2 font-medium text-slate-700 transition hover:border-slate-800 hover:text-slate-900 dark:border-slate-600 dark:text-slate-200 dark:hover:border-slate-200 dark:hover:text-white"
-								href="https://www.linkedin.com/"
-								target="_blank"
-								rel="noreferrer"
-							>
-								LinkedIn
-							</a>
-						</div>
-					</div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coen van der Grinten</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: "class" };
+  </script>
+  <style>
+    body { font-family: 'DM Sans', sans-serif; }
+    h1, .serif { font-family: 'DM Serif Display', serif; }
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+    .fade-in { animation: fadeIn 0.5s ease both; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .project-card { transition: border-color 0.2s, box-shadow 0.2s; }
+    .project-card:hover { box-shadow: 0 0 0 1px #94a3b8; }
+    html.dark .project-card:hover { box-shadow: 0 0 0 1px #475569; }
+    a { transition: color 0.15s; }
+    .nav-link { transition: color 0.15s, padding-left 0.15s; }
+    .nav-link:hover { padding-left: 4px; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+    html.dark ::-webkit-scrollbar-thumb { background: #334155; }
+  </style>
+</head>
+<body class="h-full bg-stone-50 text-slate-900 antialiased transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
 
-					<button
-						id="themeToggle"
-						type="button"
-						class="w-full rounded-lg bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-slate-200 dark:text-slate-900 dark:hover:bg-white"
-					>
-						Toggle Dark Mode
-					</button>
-				</div>
-			</aside>
+<div class="min-h-screen md:h-screen md:overflow-hidden md:pl-80">
 
-			<main class="h-full overflow-y-auto p-6 sm:p-8 md:p-12">
-				<div class="mx-auto max-w-4xl space-y-10">
-					<section class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800">
-						<h2 class="text-2xl font-semibold">About</h2>
-						<p class="mt-4 leading-relaxed text-slate-700 dark:text-slate-300">
-							I build machine learning solutions that bridge research and production. This layout
-							is ready for your project highlights, technical writing, and contact details.
-						</p>
-					</section>
+  <!-- SIDEBAR -->
+  <aside class="w-full border-b border-slate-200 bg-white p-8 md:fixed md:inset-y-0 md:left-0 md:w-80 md:overflow-y-auto md:border-b-0 md:border-r dark:border-slate-800 dark:bg-slate-950">
+    <div class="flex h-full flex-col justify-between gap-10">
+      <div class="space-y-6">
 
-					<section class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800">
-						<h2 class="text-2xl font-semibold">Featured Work</h2>
-						<div class="mt-5 grid gap-4 sm:grid-cols-2">
-							<article class="rounded-xl border border-slate-200 p-4 dark:border-slate-600">
-								<h3 class="font-semibold">Project One</h3>
-								<p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-									Add a concise summary of a machine learning project and measurable impact.
-								</p>
-							</article>
-							<article class="rounded-xl border border-slate-200 p-4 dark:border-slate-600">
-								<h3 class="font-semibold">Project Two</h3>
-								<p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-									Highlight your stack, model architecture choices, and deployment strategy.
-								</p>
-							</article>
-						</div>
-					</section>
+        <div>
+          <p class="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">Portfolio</p>
+          <img
+            src="avatar.jpg"
+            alt="Coen van der Grinten"
+            class="mb-4 h-20 w-20 rounded-full object-cover object-top shadow-sm ring-2 ring-slate-200 dark:ring-slate-700"
+          />
+          <h1 class="serif text-4xl leading-tight text-slate-900 dark:text-slate-50">Coen van der<br/>Grinten</h1>
+        </div>
 
-					<section class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800">
-						<h2 class="text-2xl font-semibold">Experience Snapshot</h2>
-						<ul class="mt-4 space-y-3 text-slate-700 dark:text-slate-300">
-							<li>Designed and deployed end-to-end ML pipelines.</li>
-							<li>Optimized model inference for latency and cost.</li>
-							<li>Collaborated across product, data, and engineering teams.</li>
-						</ul>
-					</section>
-				</div>
-			</main>
-		</div>
+        <p class="text-sm leading-relaxed text-slate-500 dark:text-slate-400">
+          ML engineer and software developer. I work at the intersection of
+          computer vision research, data infrastructure, and production systems.
+          Based in Eindhoven, the Netherlands.
+        </p>
 
-		<script>
-			const root = document.documentElement;
-			const themeToggle = document.getElementById("themeToggle");
-			const storedTheme = localStorage.getItem("theme");
-			const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        <nav class="space-y-1 text-sm">
+          <a href="#about" class="nav-link flex items-center gap-2 py-1 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100">
+            <span class="w-4 text-slate-300 dark:text-slate-600">—</span> About
+          </a>
+          <a href="#work" class="nav-link flex items-center gap-2 py-1 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100">
+            <span class="w-4 text-slate-300 dark:text-slate-600">—</span> Work
+          </a>
+          <a href="#research" class="nav-link flex items-center gap-2 py-1 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100">
+            <span class="w-4 text-slate-300 dark:text-slate-600">—</span> Research
+          </a>
+          <a href="#experience" class="nav-link flex items-center gap-2 py-1 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100">
+            <span class="w-4 text-slate-300 dark:text-slate-600">—</span> Experience
+          </a>
+        </nav>
 
-			if (storedTheme === "dark" || (!storedTheme && prefersDark)) {
-				root.classList.add("dark");
-			}
+        <div class="flex flex-wrap gap-2 pt-1 text-sm">
+          <a href="https://github.com/" target="_blank" rel="noreferrer"
+            class="rounded-full border border-slate-200 px-4 py-1.5 text-slate-600 hover:border-slate-400 hover:text-slate-900 dark:border-slate-700 dark:text-slate-400 dark:hover:border-slate-500 dark:hover:text-slate-100">
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer"
+            class="rounded-full border border-slate-200 px-4 py-1.5 text-slate-600 hover:border-slate-400 hover:text-slate-900 dark:border-slate-700 dark:text-slate-400 dark:hover:border-slate-500 dark:hover:text-slate-100">
+            LinkedIn
+          </a>
+          <a href="mailto:coen@example.com"
+            class="rounded-full border border-slate-200 px-4 py-1.5 text-slate-600 hover:border-slate-400 hover:text-slate-900 dark:border-slate-700 dark:text-slate-400 dark:hover:border-slate-500 dark:hover:text-slate-100">
+            Email
+          </a>
+        </div>
+      </div>
 
-			themeToggle.addEventListener("click", () => {
-				root.classList.toggle("dark");
-				localStorage.setItem("theme", root.classList.contains("dark") ? "dark" : "light");
-			});
-		</script>
-	</body>
+      <button id="themeToggle" type="button" aria-label="Toggle dark mode"
+        class="flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 p-2.5 text-sm text-slate-500 transition hover:bg-slate-50 dark:border-slate-800 dark:text-slate-400 dark:hover:bg-slate-900">
+        <svg id="iconSun" xmlns="http://www.w3.org/2000/svg" class="hidden h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path stroke-linecap="round" d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg id="iconMoon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <span id="themeLabel" class="text-xs">Dark mode</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="h-full overflow-y-auto">
+    <div class="mx-auto max-w-3xl space-y-16 px-6 py-12 sm:px-10 md:py-16">
+
+      <!-- ABOUT -->
+      <section id="about" class="fade-in" style="animation-delay:0.05s">
+        <p class="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">About</p>
+        <h2 class="serif mb-5 text-2xl text-slate-900 dark:text-slate-50">Building things that bridge research and reality</h2>
+        <div class="space-y-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+          <p>
+            I'm a machine learning engineer at <a href="https://thetavision.nl" target="_blank" class="text-slate-800 underline underline-offset-2 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">Theta Vision</a>,
+            where I build annotation infrastructure, contribute to computer vision research, and help turn prototype models into production systems.
+            My background spans embedded systems, clinical sensor algorithms, Test-Driven Development at Philips, and LLM fine-tuning —
+            which means I tend to be most useful at the boundaries between disciplines.
+          </p>
+          <p>
+            I hold a Master's degree from Eindhoven University of Technology (TU/e), where my thesis work in collaboration with ASML
+            resulted in a published paper on deep learning for surface reconstruction from scanning electron microscope data.
+            I graduated with an 8 out of 10.
+          </p>
+          <p>
+            Outside of work, I find it hard to stop thinking about it — which is probably a good sign.
+          </p>
+        </div>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">Python</span>
+          <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">PyTorch</span>
+          <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">React</span>
+          <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">TypeScript</span>
+          <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">Django</span>
+          <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">C / C++</span>
+          <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">Linux</span>
+          <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">STM32</span>
+        </div>
+      </section>
+
+      <hr class="border-slate-100 dark:border-slate-800" />
+
+      <!-- WORK -->
+      <section id="work" class="fade-in" style="animation-delay:0.1s">
+        <p class="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">Featured Work</p>
+        <h2 class="serif mb-6 text-2xl text-slate-900 dark:text-slate-50">Things I've built</h2>
+        <div class="space-y-4">
+
+          <!-- Cortex -->
+          <article class="project-card rounded-xl border border-slate-200 p-5 dark:border-slate-800">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="font-medium text-slate-900 dark:text-slate-100">Cortex — Annotation Infrastructure</h3>
+                <p class="mt-1 text-xs text-slate-400 dark:text-slate-500">Theta Vision · 2023–present</p>
+              </div>
+              <span class="tag shrink-0 bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300">Platform</span>
+            </div>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+              Developed a broad suite of annotation tooling within Cortex, Theta Vision's internal data management platform.
+              This includes segmentation tooling with SAM 2.1 and SAM 3 assistance, bounding box and localization tools,
+              panoptic segmentation, multi-object tracking (MOT) annotation, and video interval / timestamp annotation.
+              Also contributed to architectural decisions and Django/React/TypeScript stack improvements across the platform.
+            </p>
+            <div class="mt-3 flex flex-wrap gap-1.5">
+              <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">Django</span>
+              <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">React</span>
+              <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">TypeScript</span>
+              <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">SAM 2.1 / SAM 3</span>
+              <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">Computer Vision</span>
+            </div>
+          </article>
+
+          <!-- IMAGEN / ECAF -->
+          <article class="project-card rounded-xl border border-slate-200 p-5 dark:border-slate-800">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="font-medium text-slate-900 dark:text-slate-100">IMAGEN — Animal Tracking & Behaviour Analysis</h3>
+                <p class="mt-1 text-xs text-slate-400 dark:text-slate-500">Theta Vision × Wageningen University · 2025–present</p>
+              </div>
+              <span class="tag shrink-0 bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-300">Research</span>
+            </div>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+              Contributing to a project aimed at improving farm animal welfare through high-quality tracking and behavioural analysis in pen environments.
+              Upgraded the ECAF tracking algorithm with a segmentation-based detector stage, developed an efficient video mask propagation tool
+              for building annotated training datasets, and collaborated with intern Tijn Bergmans on training the updated pipeline.
+              Two papers from this project have been accepted for publication.
+            </p>
+            <div class="mt-3 flex flex-wrap gap-1.5">
+              <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">Python</span>
+              <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">PyTorch</span>
+              <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">Multi-Object Tracking</span>
+              <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">Segmentation</span>
+            </div>
+          </article>
+
+          <!-- LLM work -->
+          <article class="project-card rounded-xl border border-slate-200 p-5 dark:border-slate-800">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="font-medium text-slate-900 dark:text-slate-100">LLM Fine-tuning — Document Extraction & Summarisation</h3>
+                <p class="mt-1 text-xs text-slate-400 dark:text-slate-500">Theta Vision · 2023–2024</p>
+              </div>
+              <span class="tag shrink-0 bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-300">R&D</span>
+            </div>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+              Led two separate LLM fine-tuning projects: one focused on automated extraction of structured data from trucking transit orders,
+              and one aimed at generating plain-language video scripts from complex pharmaceutical package inserts (bijsluiters) for Healthbase.
+              Fine-tuned Qwen and experimented with quantisation strategies and model sizes to balance performance and compute constraints.
+              Both reached working prototypes; in the Healthbase case, the fine-tuned model measurably outperformed off-the-shelf alternatives.
+            </p>
+            <div class="mt-3 flex flex-wrap gap-1.5">
+              <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">Qwen</span>
+              <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">Fine-tuning</span>
+              <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">Quantisation</span>
+              <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">Python</span>
+            </div>
+          </article>
+
+          <!-- ASML thesis -->
+          <article class="project-card rounded-xl border border-slate-200 p-5 dark:border-slate-800">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="font-medium text-slate-900 dark:text-slate-100">Master's Thesis — SEM Surface Reconstruction (ASML)</h3>
+                <p class="mt-1 text-xs text-slate-400 dark:text-slate-500">TU/e × ASML · 2022–2023</p>
+              </div>
+              <span class="tag shrink-0 bg-purple-50 text-purple-700 dark:bg-purple-950 dark:text-purple-300">Academic</span>
+            </div>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+              Graduation project supervised by PhD researcher Tim Houben, in collaboration with ASML.
+              Developed a deep learning approach to optimise 3D surface reconstruction from segmented scanning electron microscope (SEM) detector data,
+              addressing noise and geometric limitations inherent to SEM imaging. Graduated with an 8/10, resulting in a co-authored peer-reviewed publication.
+            </p>
+            <div class="mt-3 flex flex-wrap gap-1.5">
+              <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">Deep Learning</span>
+              <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">Computer Vision</span>
+              <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">PyTorch</span>
+              <span class="tag bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">Published</span>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <hr class="border-slate-100 dark:border-slate-800" />
+
+      <!-- RESEARCH / PUBLICATIONS -->
+      <section id="research" class="fade-in" style="animation-delay:0.15s">
+        <p class="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">Research</p>
+        <h2 class="serif mb-6 text-2xl text-slate-900 dark:text-slate-50">Publications</h2>
+        <div class="space-y-5">
+
+          <div class="border-l-2 border-slate-200 pl-5 dark:border-slate-700">
+            <p class="text-sm font-medium text-slate-800 dark:text-slate-200">
+              Optimizing surface reconstruction using a segmented scanning electron microscope detector and deep learning
+            </p>
+            <p class="mt-1 text-xs text-slate-500 dark:text-slate-500">
+              T. Houben, M. Pisarenco, T.J. Huisman, J. Kustra, <strong>C. van der Grinten</strong>, F. van der Sommen, P.H.N. de With · 2025
+            </p>
+            <p class="mt-1 text-xs text-slate-400 dark:text-slate-600">TU/e × ASML collaboration</p>
+          </div>
+
+          <div class="border-l-2 border-slate-200 pl-5 dark:border-slate-700">
+            <p class="text-sm font-medium text-slate-800 dark:text-slate-200">
+              ECAF: Animal tracking and behaviour analysis for farm welfare monitoring
+            </p>
+            <p class="mt-1 text-xs text-slate-500 dark:text-slate-500">
+              Theta Vision × Wageningen University · Accepted 2025
+            </p>
+            <p class="mt-1 text-xs text-slate-400 dark:text-slate-600">IMAGEN project — details to be confirmed</p>
+          </div>
+
+          <div class="border-l-2 border-slate-200 pl-5 dark:border-slate-700">
+            <p class="text-sm font-medium text-slate-800 dark:text-slate-200">
+              Ankle joint angle estimation from sensor data for clinical foot prosthesis modelling
+            </p>
+            <p class="mt-1 text-xs text-slate-500 dark:text-slate-500">
+              <strong>C. van der Grinten</strong> et al. · Fontys University of Applied Sciences · 2021
+            </p>
+            <p class="mt-1 text-xs text-slate-400 dark:text-slate-600">Supervised by Chris Lee · Second author</p>
+          </div>
+
+        </div>
+      </section>
+
+      <hr class="border-slate-100 dark:border-slate-800" />
+
+      <!-- EXPERIENCE -->
+      <section id="experience" class="fade-in" style="animation-delay:0.2s">
+        <p class="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">Experience</p>
+        <h2 class="serif mb-6 text-2xl text-slate-900 dark:text-slate-50">Timeline</h2>
+        <div class="relative space-y-8 pl-6 before:absolute before:inset-y-0 before:left-0 before:w-px before:bg-slate-200 dark:before:bg-slate-800">
+
+          <div class="relative before:absolute before:-left-[23px] before:top-1.5 before:h-2.5 before:w-2.5 before:rounded-full before:border-2 before:border-slate-300 before:bg-stone-50 dark:before:border-slate-600 dark:before:bg-slate-950">
+            <p class="text-xs text-slate-400 dark:text-slate-600">2023 – present</p>
+            <p class="mt-0.5 font-medium text-slate-900 dark:text-slate-100">ML Engineer — Theta Vision</p>
+            <p class="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+              Full-time role following my Master's internship. Building annotation infrastructure on the Cortex platform,
+              contributing to the IMAGEN animal tracking research project, and leading LLM fine-tuning work for two client projects.
+              Also programming embedded firmware in C/C++ for the Roef LoRa Controller (STM32).
+            </p>
+          </div>
+
+          <div class="relative before:absolute before:-left-[23px] before:top-1.5 before:h-2.5 before:w-2.5 before:rounded-full before:border-2 before:border-slate-300 before:bg-stone-50 dark:before:border-slate-600 dark:before:bg-slate-950">
+            <p class="text-xs text-slate-400 dark:text-slate-600">2022 – 2023</p>
+            <p class="mt-0.5 font-medium text-slate-900 dark:text-slate-100">Master's Internship — Theta Vision</p>
+            <p class="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+              Computer vision project on automated seed classification for an agricultural assembly line —
+              classifying whether seeds were correctly placed within cups under production conditions.
+            </p>
+          </div>
+
+          <div class="relative before:absolute before:-left-[23px] before:top-1.5 before:h-2.5 before:w-2.5 before:rounded-full before:border-2 before:border-slate-300 before:bg-stone-50 dark:before:border-slate-600 dark:before:bg-slate-950">
+            <p class="text-xs text-slate-400 dark:text-slate-600">2021</p>
+            <p class="mt-0.5 font-medium text-slate-900 dark:text-slate-100">Graduation Internship — Philips</p>
+            <p class="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+              Implemented Cucumber's wire protocol into Philips' open-source embedded infralib development stack,
+              enabling human-readable Gherkin test descriptions to map directly to low-level embedded execution code.
+              Significantly advanced their Test-Driven Development infrastructure.
+            </p>
+          </div>
+
+          <div class="relative before:absolute before:-left-[23px] before:top-1.5 before:h-2.5 before:w-2.5 before:rounded-full before:border-2 before:border-slate-300 before:bg-stone-50 dark:before:border-slate-600 dark:before:bg-slate-950">
+            <p class="text-xs text-slate-400 dark:text-slate-600">2020</p>
+            <p class="mt-0.5 font-medium text-slate-900 dark:text-slate-100">Internship — Simac QuadCore</p>
+            <p class="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+              Helped evaluate and execute a platform migration from Siemens TIA Portal to Phoenix Contact PLCnext —
+              porting and testing a working PLC application on the new system. PLCnext's openness to modern low-level programming
+              languages made it an attractive cost-effective alternative for industrial automation workflows.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Education -->
+        <div class="mt-12">
+          <p class="mb-5 text-xs font-medium uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">Education</p>
+          <div class="space-y-4">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="font-medium text-slate-900 dark:text-slate-100">M.Sc. Electrical Engineering — TU/e</p>
+                <p class="mt-0.5 text-sm text-slate-500 dark:text-slate-500">Eindhoven University of Technology · 2021–2023 · Graduated 8/10</p>
+              </div>
+            </div>
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="font-medium text-slate-900 dark:text-slate-100">B.Eng. Embedded Systems — Fontys</p>
+                <p class="mt-0.5 text-sm text-slate-500 dark:text-slate-500">Fontys University of Applied Sciences · 2017–2021</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="pb-6 pt-4 text-center text-xs text-slate-300 dark:text-slate-700">
+        Coen van der Grinten · Eindhoven
+      </footer>
+
+    </div>
+  </main>
+</div>
+
+<script>
+  const root = document.documentElement;
+  const themeToggle = document.getElementById("themeToggle");
+  const iconSun = document.getElementById("iconSun");
+  const iconMoon = document.getElementById("iconMoon");
+  const themeLabel = document.getElementById("themeLabel");
+  const storedTheme = localStorage.getItem("theme");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  function applyTheme(isDark) {
+    root.classList.toggle("dark", isDark);
+    iconSun.classList.toggle("hidden", !isDark);
+    iconMoon.classList.toggle("hidden", isDark);
+    themeLabel.textContent = isDark ? "Light mode" : "Dark mode";
+  }
+
+  applyTheme(storedTheme === "dark" || (!storedTheme && prefersDark));
+
+  themeToggle.addEventListener("click", () => {
+    const isDark = !root.classList.contains("dark");
+    applyTheme(isDark);
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener("click", e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute("href"));
+      if (target) target.scrollIntoView({ behavior: "smooth" });
+    });
+  });
+</script>
+</body>
 </html>
